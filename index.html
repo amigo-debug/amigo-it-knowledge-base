@@ -11,18 +11,21 @@
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #e2e8f0;
       min-height: 100vh;
-      padding: 2rem;
+      padding: 1rem;
     }
     .container { max-width: 1200px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 3rem; }
-    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
-    .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-    .category-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 0.75rem; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; }
-    .category-card:hover { border-color: rgba(148, 163, 184, 0.5); background: rgba(30, 41, 59, 1); transform: translateY(-2px); }
-    .category-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-    .category-name { font-weight: 600; }
-    .footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9rem; }
+    header { text-align: center; margin-bottom: 2rem; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { color: #94a3b8; font-size: 0.95rem; }
+    .controls { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    select { padding: 0.5rem; background: rgba(30, 41, 59, 0.8); color: #e2e8f0; border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 0.5rem; }
+    .terms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .term-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 0.75rem; padding: 1.5rem; }
+    .term-card:hover { border-color: rgba(148, 163, 184, 0.5); background: rgba(30, 41, 59, 1); }
+    .term-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; color: #60a5fa; }
+    .term-desc { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; }
+    .footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.85rem; }
+    .loading { text-align: center; color: #94a3b8; }
   </style>
 </head>
 <body>
@@ -32,44 +35,88 @@
       <p class="subtitle">恩海居資訊中心 — 用廣東話解釋 IT 術語</p>
     </header>
     
-    <div class="categories">
-      <div class="category-card">
-        <div class="category-icon">🔐</div>
-        <div class="category-name">登入與安全</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">🗄️</div>
-        <div class="category-name">資料庫</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">🖥️</div>
-        <div class="category-name">前端介面</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">🏗️</div>
-        <div class="category-name">系統架構</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">📱</div>
-        <div class="category-name">硬件與連線</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">⚙️</div>
-        <div class="category-name">自動化</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">📄</div>
-        <div class="category-name">文件處理</div>
-      </div>
-      <div class="category-card">
-        <div class="category-icon">🌐</div>
-        <div class="category-name">網絡</div>
-      </div>
+    <div class="controls">
+      <select id="categoryFilter">
+        <option value="">所有分類</option>
+      </select>
+      <input type="text" id="searchInput" placeholder="搜尋術語..." style="padding: 0.5rem; background: rgba(30, 41, 59, 0.8); color: #e2e8f0; border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 0.5rem; flex: 1; max-width: 300px;">
+    </div>
+    
+    <div id="termsContainer" class="terms-grid">
+      <div class="loading">載入中...</div>
     </div>
     
     <footer class="footer">
       <p>部署於 GitHub Pages | <a href="https://github.com/amigo-debug/amigo-it-knowledge-base" style="color: #60a5fa;">查看倉庫</a></p>
     </footer>
   </div>
+
+  <script>
+    let allTerms = [];
+    
+    async function loadTerms() {
+      try {
+        const response = await fetch('terms.ts');
+        const text = await response.text();
+        
+        const termsMatch = text.match(/export const terms = \[([\s\S]*?)\];/);
+        if (!termsMatch) {
+          document.getElementById('termsContainer').innerHTML = '<div class="loading">無法載入術語資料</div>';
+          return;
+        }
+        
+        const jsonStr = '[' + termsMatch[1] + ']';
+        allTerms = eval(jsonStr);
+        
+        const categories = [...new Set(allTerms.map(t => t.category))];
+        const categoryFilter = document.getElementById('categoryFilter');
+        categories.forEach(cat => {
+          const option = document.createElement('option');
+          option.value = cat;
+          option.textContent = cat;
+          categoryFilter.appendChild(option);
+        });
+        
+        renderTerms();
+      } catch (error) {
+        console.error('載入錯誤:', error);
+        document.getElementById('termsContainer').innerHTML = '<div class="loading">載入失敗：' + error.message + '</div>';
+      }
+    }
+    
+    function renderTerms() {
+      const categoryFilter = document.getElementById('categoryFilter').value;
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      
+      let filtered = allTerms;
+      if (categoryFilter) {
+        filtered = filtered.filter(t => t.category === categoryFilter);
+      }
+      if (searchTerm) {
+        filtered = filtered.filter(t => 
+          t.name.toLowerCase().includes(searchTerm) || 
+          t.description.toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      const container = document.getElementById('termsContainer');
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="loading">無結果</div>';
+        return;
+      }
+      
+      container.innerHTML = filtered.map(term => `
+        <div class="term-card">
+          <div class="term-name">${term.name}</div>
+          <div class="term-desc">${term.description}</div>
+        </div>
+      `).join('');
+    }
+    
+    document.getElementById('categoryFilter').addEventListener('change', renderTerms);
+    document.getElementById('searchInput').addEventListener('input', renderTerms);
+    
+    loadTerms();
+  </script>
 </body>
 </html>
