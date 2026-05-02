@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigo IT 知識庫</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 3rem; }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
+    .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .category-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 0.75rem; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; }
+    .category-card:hover { border-color: rgba(148, 163, 184, 0.5); background: rgba(30, 41, 59, 1); transform: translateY(-2px); }
+    .category-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .category-name { font-weight: 600; }
+    .footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔍 Amigo IT 知識庫</h1>
+      <p class="subtitle">恩海居資訊中心 — 用廣東話解釋 IT 術語</p>
+    </header>
+    
+    <div class="categories">
+      <div class="category-card">
+        <div class="category-icon">🔐</div>
+        <div class="category-name">登入與安全</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🗄️</div>
+        <div class="category-name">資料庫</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🖥️</div>
+        <div class="category-name">前端介面</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🏗️</div>
+        <div class="category-name">系統架構</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">📱</div>
+        <div class="category-name">硬件與連線</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">⚙️</div>
+        <div class="category-name">自動化</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">📄</div>
+        <div class="category-name">文件處理</div>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🌐</div>
+        <div class="category-name">網絡</div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>部署於 GitHub Pages | <a href="https://github.com/amigo-debug/amigo-it-knowledge-base" style="color: #60a5fa;">查看倉庫</a></p>
+    </footer>
+  </div>
+</body>
+</html>
