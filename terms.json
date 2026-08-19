@@ -671,6 +671,168 @@
         "流暢",
         "App"
       ]
+    },
+    {
+      "id": "manus-skill-package",
+      "en": "Manus Skill Package",
+      "zh": "Manus 技能套件",
+      "cat": "architecture",
+      "catLabel": "系統架構",
+      "catIcon": "🏗️",
+      "desc": "一個用來教 AI 點樣處理特定類型工作嘅可重用資料夾。入面通常有 SKILL.md 主指引、references 參考資料、scripts 工具及 templates 範本。",
+      "analogy": "就好似一份專業部門工作手冊，唔只講原理，仲講遇到唔同情況時應該點行下一步。",
+      "tags": [
+        "Manus",
+        "AI",
+        "SKILL.md",
+        "可重用"
+      ]
+    },
+    {
+      "id": "sub-agent",
+      "en": "Sub-agent",
+      "zh": "子代理",
+      "cat": "architecture",
+      "catLabel": "系統架構",
+      "catIcon": "🏗️",
+      "desc": "由主 AI 分派出去、專責處理其中一個子任務嘅 AI 工作單位。將大型工作拆開後，可以各自分析，再由主 AI 綜合結果。",
+      "analogy": "就好似主管將一份大報告分俾幾個專責同事，各自完成護理、財務、服務質素部分，最後由主管整合。",
+      "tags": [
+        "AI",
+        "分工",
+        "並行處理",
+        "工作流"
+      ]
+    },
+    {
+      "id": "seo-audit",
+      "en": "SEO Audit",
+      "zh": "網站 SEO 審核",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "有系統咁檢查網站能否被搜尋引擎讀取、理解、收錄及顯示，並將問題按影響及修正次序整理成行動計劃。",
+      "analogy": "就好似為一間店舖做全面巡查：門口搵唔搵到、貨架分類清唔清楚、標籤正唔正確、客人行得順唔順。",
+      "tags": [
+        "SEO",
+        "網站",
+        "審核",
+        "Google"
+      ]
+    },
+    {
+      "id": "headless-rendering",
+      "en": "Headless Rendering",
+      "zh": "無頭瀏覽器渲染",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "由程式啟動一個冇畫面視窗嘅瀏覽器，執行 JavaScript 後再讀取真正顯示出嚟嘅網頁內容。對 React、Vue、Next.js 等 SPA 特別有用。",
+      "analogy": "就好似唔只睇餐牌原稿，而係真正入廚房等道菜煮好，再檢查客人最後收到嘅一碟菜。",
+      "tags": [
+        "SEO",
+        "SPA",
+        "JavaScript",
+        "Playwright"
+      ]
+    },
+    {
+      "id": "core-web-vitals",
+      "en": "Core Web Vitals",
+      "zh": "核心網頁指標",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "用來衡量網頁實際使用體驗嘅三個主要指標：LCP（載入速度）、INP（互動反應）及 CLS（畫面穩定性）。",
+      "analogy": "就好似量度升降機由開門、入人、按掣到穩定停站嘅整體體驗，而唔係只睇部機有冇著到。",
+      "tags": [
+        "SEO",
+        "LCP",
+        "INP",
+        "CLS",
+        "速度"
+      ]
+    },
+    {
+      "id": "schema-jsonld",
+      "en": "Schema.org / JSON-LD",
+      "zh": "結構化資料標記",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "加喺網頁入面、俾搜尋引擎理解內容類型嘅機器可讀資料，例如組織、文章、產品、活動或本地商戶。JSON-LD 係常用寫法。",
+      "analogy": "就好似喺文件上加一張標準表格，清楚標示邊個係標題、日期、地址、價格，令機器唔使靠估。",
+      "tags": [
+        "SEO",
+        "Schema",
+        "JSON-LD",
+        "搜尋引擎"
+      ]
+    },
+    {
+      "id": "eeat",
+      "en": "E-E-A-T",
+      "zh": "經驗、專業、權威、可信度",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "評估內容可信程度嘅框架：Experience（經驗）、Expertise（專業）、Authoritativeness（權威）及 Trustworthiness（可信度）。",
+      "analogy": "就好似判斷一位講者值唔值得信：佢有冇親身做過、識唔識呢科、其他人認唔認同、講嘢係咪透明可靠。",
+      "tags": [
+        "SEO",
+        "內容",
+        "可信度",
+        "E-E-A-T"
+      ]
+    },
+    {
+      "id": "geo-ai-search",
+      "en": "GEO / AI Search Optimization",
+      "zh": "生成式引擎優化／AI 搜尋優化",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "改善內容被 AI 搜尋功能理解、引用及正確歸因嘅做法。重點係清楚回答問題、提供可核實來源及建立一致嘅實體資料。",
+      "analogy": "就好似將專業答案寫成一段可以直接引用嘅標準回覆，並附上足夠資料俾人核對，而唔係只堆砌關鍵字。",
+      "tags": [
+        "AI",
+        "SEO",
+        "GEO",
+        "AI Overviews",
+        "引用"
+      ]
+    },
+    {
+      "id": "lab-field-data",
+      "en": "Lab Data / Field Data",
+      "zh": "實驗室數據／實地數據",
+      "cat": "seo",
+      "catLabel": "SEO 與 AI 搜尋",
+      "catIcon": "🔍",
+      "desc": "Lab data 係喺固定測試環境量度；field data 係真實用戶裝置、網絡及地區收集。兩者用途唔同，不能互相當作完全等價。",
+      "analogy": "就好似喺測試廚房計時，與真正繁忙時段觀察客人等候時間；前者可重複，後者更接近現場。",
+      "tags": [
+        "SEO",
+        "速度",
+        "CWV",
+        "數據"
+      ]
+    },
+    {
+      "id": "progressive-disclosure",
+      "en": "Progressive Disclosure",
+      "zh": "按需載入知識",
+      "cat": "architecture",
+      "catLabel": "系統架構",
+      "catIcon": "🏗️",
+      "desc": "先載入最必要嘅主指引，遇到特定任務先讀取對應參考資料，避免一開始塞入太多內容而影響 AI 判斷。",
+      "analogy": "就好似主管先睇一頁工作摘要，遇到藥物、膳食或感染控制問題，先打開相應專科章節。",
+      "tags": [
+        "AI",
+        "Skill",
+        "知識管理",
+        "效率"
+      ]
     }
   ],
   "categories": {
@@ -713,6 +875,11 @@
       "label": "網絡",
       "icon": "🌐",
       "color": "var(--cat-network)"
+    },
+    "seo": {
+      "label": "SEO 與 AI 搜尋",
+      "icon": "🔍",
+      "color": "var(--cat-seo)"
     }
   }
 }
